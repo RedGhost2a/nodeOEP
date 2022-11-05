@@ -9,7 +9,7 @@ const userService = require('./user.service');
 
 router.get('/', getAll);
 router.get('/:id', getById);
-router.post('/', createSchema, create);
+router.post('/new', createSchema, create);
 router.put('/:id', updateSchema, update);
 router.delete('/:id', _delete);
 
@@ -58,7 +58,9 @@ function createSchema(req, res, next) {
         email: Joi.string().email().required(),
         password: Joi.string().min(6).required(),
         confirmPassword: Joi.string().valid(Joi.ref('password')).required()
+
     });
+    console.log('toto')
     validateRequest(req, next, schema);
 }
 

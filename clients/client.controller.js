@@ -8,7 +8,7 @@ const clientService = require('./client.service')
 
 router.get('/', getAll);
 router.get('/:id', getById);
-router.post('new', createSchema, create);
+router.post('/new', createSchema, create);
 router.put('/:id', updateSchema, update);
 router.delete('/:id', _delete);
 
@@ -50,14 +50,14 @@ function _delete(req, res, next) {
 
 function createSchema(req, res, next) {
     const schema = Joi.object({
-        firstName: Joi.string().required(),
-        lastName: Joi.string().required(),
-        adresses: Joi.string().required(),
-        zipcode: Joi.string().required(),
-        city: Joi.string().required(),
-        country: Joi.string().required(),
-        email: Joi.string().email().required(),
-        phonenumber: Joi.number().required(),
+        firstName: Joi.string(),
+        lastName: Joi.string(),
+        adresses: Joi.string(),
+        zipcode: Joi.string(),
+        city: Joi.string(),
+        country: Joi.string(),
+        email: Joi.string().email(),
+        phonenumber: Joi.number(),
     });
     validateRequest(req, next, schema);
 }
