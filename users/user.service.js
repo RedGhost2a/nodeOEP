@@ -25,7 +25,7 @@ async function create(params) {
     const user = new db.User(params);
     
     // hash password
-    user.passwordHash = await bcrypt.hash(params.password, 10);
+    user.password = await bcrypt.hash(params.password, 10);
 
     // save user
     await user.save();
@@ -42,7 +42,7 @@ async function update(id, params) {
 
     // hash password if it was entered
     if (params.password) {
-        params.passwordHash = await bcrypt.hash(params.password, 10);
+        params.password = await bcrypt.hash(params.password, 10);
     }
 
     // copy params to user and save

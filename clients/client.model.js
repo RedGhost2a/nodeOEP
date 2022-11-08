@@ -12,6 +12,8 @@ function model(sequelize) {
         country: {type: DataTypes.STRING, allowNull: false},
         email: {type: DataTypes.STRING, allowNull: false},
         phonenumber: {type: DataTypes.STRING, allowNull: false},
+        type: {type: DataTypes.STRING, allowNull: false},
+        tvaintra:{type: DataTypes.STRING,},
     };
 
     return sequelize.define('Client', attributes);

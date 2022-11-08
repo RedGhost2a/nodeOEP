@@ -58,6 +58,8 @@ function createSchema(req, res, next) {
         country: Joi.string(),
         email: Joi.string().email(),
         phonenumber: Joi.number(),
+        type:Joi.string(),
+        tvaintra: Joi.string(),
     });
     validateRequest(req, next, schema);
 }
@@ -72,6 +74,8 @@ function updateSchema(req, res, next) {
         country: Joi.string().empty(''),
         email: Joi.string().email().empty(''),
         phonenumber: Joi.number().empty(''),
+        type:Joi.string().empty(''),
+        tvaintra: Joi.string().empty(''),
     })
     validateRequest(req, next, schema);
 }
