@@ -22,6 +22,8 @@ async function initialize() {
     db.Client = require('../clients/client.model')(sequelize);
     db.Entreprise = require('../entreprise/entreprise.model')(sequelize)
 
+    db.User.belongsToMany(db.Entreprise, { through: 'User_Profiles' });
+    db.Entreprise.belongsToMany(db.User, { through: 'User_Profiles' });
     // sync all models with database
     await sequelize.sync({ alter: true });
 }
